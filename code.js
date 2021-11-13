@@ -6,11 +6,13 @@ let scoreCount = document.getElementById("scoreCounter")
 let category = document.getElementById("category")
 let userGuess = document.getElementById(`inputId`)
 
+
 function fetchData() {
     fetch(`https://jservice.kenzie.academy/api/clues`)
         .then(response => response.json())
         .then((data) => {
             console.log(data)
+
             let clueIndex = Math.floor(Math.random() * 100)
             let answer = data.clues[clueIndex].answer
             let question = data.clues[clueIndex].question
@@ -22,16 +24,15 @@ function fetchData() {
             console.log(answer)
         })
 }
+
+
 fetchData()
 document.querySelector(`#questionSubmit`).addEventListener("submit", (event) => {
     event.preventDefault()
-
     const userInput = document.querySelector("#inputId")
-
     console.log(event)
     if (userInput.value.toLowerCase() === questionData.answer.toLowerCase()) {
         score++;
-
     } else {
         score = 0
     }
