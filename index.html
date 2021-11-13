@@ -20,11 +20,16 @@
   </head>
 
   <body>
-    <h1>Open the Developer Tools to see the console output.</h1>
-    <h3>
-      Either right click and select "Inspect" or use the shortcut Option + ⌘ + J
-      (on macOS), or Shift + CTRL + J (on Windows/Linux).
-    </h3>
+    <h1 class= "title">Jeopardy</h1>
+    <h3 id= "scoreCounter"></h3>
+    <div id= "category"></div>
+    <div id= "question"></div>
+<form id="questionSubmit">
+<input id="inputId" type= "text" autofocus placeholder="DOOM">
+<button>submit</button>
+<button id="nextQuestion" onclick="document.getElementById('inputId').value=''">next question</button>
+
+</form>
     <script src="code.js"></script>
   </body>
 </html>
