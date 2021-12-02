@@ -26,7 +26,7 @@ function fetchData() {
             category.innerHTML = categoryTitle
             questionData = { answer }
             questionId.innerHTML = question
-            scoreCount.innerHTML = `Score Count = ${score}`
+            scoreCount.innerHTML = `light Absorbed: ${score}`
             console.log(answer)
         })
 }
