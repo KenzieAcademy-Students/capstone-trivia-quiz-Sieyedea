@@ -11,15 +11,30 @@ let questionId = document.getElementById("question")
 let scoreCount = document.getElementById("scoreCounter")
 let category = document.getElementById("category")
 let userGuess = document.getElementById(`inputId`)
+let randomCategory;
+let message = document.querySelector(`.message`)
 
+
+function randomClue () {
+    fetch(`https://jservice.kenzie.academy/api/random-clue`)
+    .then(response => response.json())
+    .then((data) => {
+        // console.log(data)
+    randomCategory = data.categoryId
+fetchData()
+    })
+}
+randomClue()
 
 function fetchData() {
-    fetch(`https://jservice.kenzie.academy/api/clues`)
+    fetch(`https://jservice.kenzie.academy/api/clues?category=${randomCategory}`)
         .then(response => response.json())
         .then((data) => {
             console.log(data)
+        
 
-            let clueIndex = Math.floor(Math.random() * 100)
+
+            let clueIndex = Math.floor(Math.random() * data.clues.length)
             let answer = data.clues[clueIndex].answer
             let question = data.clues[clueIndex].question
             let categoryTitle = data.clues[clueIndex].category.title
@@ -32,17 +47,19 @@ function fetchData() {
 }
 
 
-fetchData()
 document.querySelector(`#questionSubmit`).addEventListener("submit", (event) => {
     event.preventDefault()
     const userInput = document.querySelector("#inputId")
     console.log(event)
     if (userInput.value.toLowerCase() === questionData.answer.toLowerCase()) {
         score++;
+        message.innerHTML = "shiny"
+        fetchData()
     } else {
         score = 0
+        message.innerHTML = "the darkness comes"
+        randomClue()
     }
     userGuess.value = ""
     questionId.innerHTML = ""
-    fetchData()
 })
