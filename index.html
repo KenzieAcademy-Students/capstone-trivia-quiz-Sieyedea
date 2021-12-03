@@ -26,7 +26,7 @@
 
  
     <h1 class= "title">Light Trivia</h1>
-    <p style= "position: absolute; top: 50%">You have finally awoken little light. You are very dull, too dull for this dark world. Answer the wisps' strange questions to become brighter. Answer wrong and lose all your light. Don't worry. . .You can get it back.</p>
+    <p class = "dialog">You have finally awoken little light. You are very dull, too dull for this dark world. Answer the wisps' strange questions to become brighter. Answer wrong and lose all your light. Don't worry. . .You can get it back.</p>
 
     <h3 id= "scoreCounter"></h3>
     <div id= "category"></div>
@@ -34,9 +34,11 @@
 
   <form id= "questionSubmit">
   <input id= "inputId" type= "text" autofocus placeholder="luminate">
-  <button>light</button>
-  <button id= "nextQuestion" onclick="document.getElementById('inputId').value=''">next question</button>
+  <button id= "nextQuestion">light</button>
   </form>
+
+<p class="message"></p>
+
  </div>
 </body>
 
